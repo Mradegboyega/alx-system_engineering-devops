@@ -1,0 +1,5 @@
+#!/bin/bash
+
+# Create a directory named my_first_directory in /tmp/
+mkdir /tmp/my_first_directory
+
