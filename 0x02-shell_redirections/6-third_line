@@ -1,0 +1,5 @@
+#!/bin/bash
+
+# Use 'head' to get the first three lines and then 'tail' to get the third line.
+head -n 3 iacta | tail -n 1
+

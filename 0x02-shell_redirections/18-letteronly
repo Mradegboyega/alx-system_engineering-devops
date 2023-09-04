@@ -1,0 +1,5 @@
+#!/bin/bash
+
+# Use 'grep' with a regular expression to find lines starting with a letter (capital or lowercase) in /etc/ssh/sshd_config
+grep '^[a-zA-Z]' /etc/ssh/sshd_config
+

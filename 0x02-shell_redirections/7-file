@@ -1,0 +1,15 @@
+#!/bin/bash
+
+# Define the file name with special characters
+file_name='\*\\'"Best School"\'\\*$\?\*\*\*\*\*:)'
+
+# Define the content with a newline at the end
+content="Best School\n"
+
+# Create the file with the specified content
+echo -e "$content" > "$file_name"
+
+# Display the result
+ls -l "$file_name"
+cat -e "$file_name"
+
