@@ -1,0 +1,51 @@
+#!/bin/bash
+
+# Check if the WATER and STIR environment variables are set
+if [ -z "$WATER" ] || [ -z "$STIR" ]; then
+  echo "The WATER or STIR environment variable is not set."
+  exit 1
+fi
+
+# Define a function to convert from "water" base to base 10
+convert_water_to_base10() {
+  local base_water="abcdefghijklmnopqrstuvwxyz"
+  local base10=0
+  local water="$1"
+
+  for ((i = 0; i < ${#water}; i++)); do
+    local char="${water:i:1}"
+    local position=$(expr index "$base_water" "$char")
+    base10=$((base10 * 26 + position))
+  done
+
+  echo "$base10"
+}
+
+# Convert WATER and STIR to base 10
+water_base10=$(convert_water_to_base10 "$WATER")
+stir_base10=$(convert_water_to_base10 "$STIR")
+
+# Perform the addition
+result_base10=$((water_base10 + stir_base10))
+
+# Define a function to convert from base 10 to "bestchol" base
+convert_base10_to_bestchol() {
+  local base10="$1"
+  local base_bestchol="shtbeolhc"
+  local result=""
+
+  while [ "$base10" -gt 0 ]; do
+    local remainder=$((base10 % 9))
+    result="${base_bestchol:remainder:1}$result"
+    base10=$((base10 / 9))
+  done
+
+  echo "$result"
+}
+
+# Convert the result to "bestchol" base
+result_bestchol=$(convert_base10_to_bestchol "$result_base10")
+
+# Print the result
+echo "$result_bestchol"
+

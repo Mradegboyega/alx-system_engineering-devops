@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# Check if the TRUEKNOWLEDGE environment variable is set
+if [ -z "$TRUEKNOWLEDGE" ]; then
+  echo "The TRUEKNOWLEDGE environment variable is not set."
+  exit 1
+fi
+
+# Perform the addition
+result=$((TRUEKNOWLEDGE + 128))
+
+# Print the result followed by a new line
+echo "$result"
+

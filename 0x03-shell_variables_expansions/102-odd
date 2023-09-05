@@ -1,0 +1,5 @@
+#!/bin/bash
+
+# Use awk to print every other line, starting with the first line
+awk 'NR % 2 == 1' "$@"
+

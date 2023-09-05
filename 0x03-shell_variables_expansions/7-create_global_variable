@@ -1,0 +1,8 @@
+#!/bin/bash
+
+# Define the variable BEST with the value "School" and export it
+export BEST="School"
+
+# Print a message to confirm the variable has been created
+echo "Global-like variable BEST has been set to '$BEST'"
+

@@ -1,0 +1,17 @@
+#!/bin/bash
+
+# List local variables
+echo "Local variables:"
+local_vars=$(set -o posix; set)
+for var in $local_vars; do
+  echo "$var"
+done
+
+# List environment variables
+echo -e "\nEnvironment variables:"
+env
+
+# List functions
+echo -e "\nFunctions:"
+declare -F
+
