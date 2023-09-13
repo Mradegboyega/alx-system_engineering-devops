@@ -1,8 +1,2 @@
 #!/bin/bash
-
-# Create directory /tmp/u if it doesn't exist
-mkdir -p /tmp/u
-
-# Move files beginning with uppercase letter to /tmp/u
-mv [A-Z]* /tmp/u
-
+mv [A-Z]* /tmp/u/
