@@ -1,6 +1,2 @@
 #!/bin/bash
-
-# Use 'find' to locate all .gif files in the current directory and subdirectories,
-# then use 'sort' to sort them case-insensitively by byte values
 find . -type f -iname "*.gif" -exec bash -c 'echo "${0%.*}"' {} \; | sort -f ; echo
-

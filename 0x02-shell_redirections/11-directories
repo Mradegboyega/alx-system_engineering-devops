@@ -1,15 +1,2 @@
 #!/bin/bash
-
-# Initialize a variable to count directories
-count=0
-
-# Use the 'find' command to locate all directories and sub-directories (including hidden ones)
-# in the current directory and its subfolders, excluding the current and parent directories.
-# For each found directory, increment the count.
-find . -type d -mindepth 1 -exec echo {} \; | while read -r dir; do
-  count=$((count + 1))
-done
-
-# Display the total count of directories
-echo "Total directories (including hidden) in the current directory and its subfolders: $count"
-
+find . -mindepth 1 -type d | wc -l

@@ -1,9 +1,2 @@
 #!/bin/bash
-
-# Read input from stdin
-while read -r line; do
-    # Use 'rev' to reverse the input
-    reversed_line=$(echo "$line" | rev)
-    echo "$reversed_line"
-done
-
+rev

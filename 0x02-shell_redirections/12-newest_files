@@ -1,6 +1,2 @@
 #!/bin/bash
-
-# Use 'ls' to list all files in the current directory, sorted by modification time in reverse order (newest first)
-# Use 'head' to display the first 10 lines (newest files)
 ls -t | head -n 10
-

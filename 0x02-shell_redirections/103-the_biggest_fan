@@ -1,13 +1,2 @@
 #!/bin/bash
-
-# Use cut to extract the host/IP address (first field) from each line
-cut -f1 -d$'\t' | \
-    # Sort the extracted host/IP addresses
-    sort | \
-    # Count the occurrences of each host/IP address and prefix with the count
-    uniq -c | \
-    # Sort the results numerically in reverse order (most requests first)
-    sort -nr | \
-    # Display the top 11 hosts/IP addresses
-    head -n 11
-
+awk '{printf "%s", $1}' RS='\n' && echo

@@ -1,8 +1,2 @@
 #!/bin/bash
-
-# Run the 'ls -la' command and save the output to the file "ls_cwd_content"
 ls -la > ls_cwd_content
-
-# Display a message to confirm the action
-echo "Contents of the current directory saved to ls_cwd_content"
-

@@ -1,5 +1,2 @@
 #!/bin/bash
-
-# Use 'awk' to extract and format the user and home directory information from /etc/passwd
 awk -F: '{print "User:", $1, "Home Directory:", $6}' /etc/passwd | sort -k2
-
