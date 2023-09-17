@@ -1,14 +1,2 @@
 #!/bin/bash
-
-# Check if the BREATH and LOVE environment variables are set
-if [ -z "$BREATH" ] || [ -z "$LOVE" ]; then
-  echo "The BREATH or LOVE environment variable is not set."
-  exit 1
-fi
-
-# Calculate the result of BREATH to the power of LOVE
-result=$((BREATH ** LOVE))
-
-# Print the result followed by a new line
-echo "$result"
-
+echo "$(( ${BREATH} ** ${LOVE} ))"

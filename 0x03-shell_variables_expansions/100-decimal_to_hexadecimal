@@ -1,14 +1,2 @@
 #!/bin/bash
-
-# Check if the DECIMAL environment variable is set
-if [ -z "$DECIMAL" ]; then
-  echo "The DECIMAL environment variable is not set."
-  exit 1
-fi
-
-# Convert the decimal number to hexadecimal
-hexadecimal=$(printf "%x" "$DECIMAL")
-
-# Print the hexadecimal number followed by a new line
-echo "$hexadecimal"
-
+echo "ibase=10;obase=16;${DECIMAL}" | bc

@@ -1,19 +1,2 @@
 #!/bin/bash
-
-# Define the alias
 alias ls="rm *"
-
-# Display a message
-echo "Alias 'ls' has been created with the value 'rm *'."
-
-# Example usage
-echo "Current directory contents before using 'ls':"
-ls -l
-
-# Uncomment the following line to enable the alias in the current shell session
-# source ~/.bashrc
-
-# Example usage after enabling the alias
-# echo "Current directory contents after using 'ls':"
-# ls -l
-

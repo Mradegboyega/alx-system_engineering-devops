@@ -1,12 +1,2 @@
 #!/bin/bash
-
-# Loop through lowercase letters from 'a' to 'z' twice
-for char1 in {a..z}; do
-  for char2 in {a..z}; do
-    # Check if the combination is not 'oo' and print it
-    if [ "$char1$char2" != "oo" ]; then
-      echo "$char1$char2"
-    fi
-  done
-done
-
+for i in {a..z}; do for j in {a..z}; do [[ "$i$j" != "oo" ]] && echo "$i$j"; done; done

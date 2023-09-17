@@ -1,8 +1,2 @@
 #!/bin/bash
-
-# Define the local variable BEST with the value "School"
 BEST="School"
-
-# Print a message to confirm the variable has been created
-echo "Local variable BEST has been set to '$BEST'"
-

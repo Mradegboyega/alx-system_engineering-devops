@@ -1,7 +1,2 @@
 #!/bin/bash
-
-# Loop through and print all environment variables
-for var in $(env); do
-  echo "$var"
-done
-
+env

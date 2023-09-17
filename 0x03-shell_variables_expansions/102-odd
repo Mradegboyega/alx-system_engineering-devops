@@ -1,5 +1,2 @@
 #!/bin/bash
-
-# Use awk to print every other line, starting with the first line
-awk 'NR % 2 == 1' "$@"
-
+while IFS= read -r line; do [ "$((++i % 2))" -eq 1 ] && echo "$line"; done < "$1"
