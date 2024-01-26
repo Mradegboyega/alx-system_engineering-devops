@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+# This script stops the 7-highlander process without using kill or killall.
+
+# Assuming the process name is 7-highlander
+# If it's different, replace it with the correct process name
+process_name="7-highlander"
+
+# Use pkill to stop the process
+pkill -f "$process_name"
+
+# Check if the process is still running
+if pgrep -f "$process_name" >/dev/null; then
+    echo "Failed to stop process $process_name."
+else
+    echo "Process $process_name has been stopped."
+fi
+
