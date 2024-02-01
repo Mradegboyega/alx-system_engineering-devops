@@ -1,14 +1,12 @@
 #!/usr/bin/env ruby
 
-# Regular expression to extract relevant information from log entries
-regex = /\[from:(?<sender>[^\]]+)\] \[to:(?<receiver>[^\]]+)\] \[flags:(?<flags>[^\]]+)\]/
+log_line = ARGV[0]
 
-# Loop through each line of input
-ARGF.each do |line|
-  # Match the regular expression and extract sender, receiver, and flags
-  match_data = line.match(regex)
+# Extracting sender, receiver, and flags from the log line
+sender = log_line.scan(/\[from:(\S+)\]/).flatten.first
+receiver = log_line.scan(/\[to:(\S+)\]/).flatten.first
+flags = log_line.scan(/\[flags:(.*?)\]/).flatten.first
 
-  # Output the result in the specified format
-  puts "#{match_data[:sender]},#{match_data[:receiver]},#{match_data[:flags]}" if match_data
-end
+# Outputting the result in the required format
+puts "#{sender},#{receiver},#{flags}"
 
