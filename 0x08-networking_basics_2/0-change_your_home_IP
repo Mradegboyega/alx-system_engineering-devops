@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+# This script changes the resolution of localhost to 127.0.0.2
+# and facebook.com to 8.8.8.8.
+
+# Update /etc/hosts file
+sudo sed -i 's/^127.0.0.1[[:space:]]localhost/127.0.0.2 localhost/' /etc/hosts
+sudo sed -i 's/^.*facebook.com/8.8.8.8 facebook.com/' /etc/hosts
+
+# Flush DNS cache
+sudo /etc/init.d/networking restart
+
+# Display success message
+echo "IP addresses updated successfully!"
+
