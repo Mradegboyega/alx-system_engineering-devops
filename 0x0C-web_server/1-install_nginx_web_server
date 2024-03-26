@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+# Configures an Ubuntu server with Nginx installed to serve a custom HTML page
+
+# Install Nginx using apt-get
+apt-get update
+apt-get install nginx -y
+
+# Ensure Nginx is running. Note: Using 'service' as 'systemctl' is not allowed for this task
+service nginx start
+
+# Replace the default Nginx HTML file. This ensures the custom "Hello World!" message is served
+echo "Hello World!" > /var/www/html/index.html
+
+# Reload Nginx to apply the changes without using systemctl
+service nginx reload
+
+# Note: Nginx by default listens on port 80, so no additional configuration is required for that purpose

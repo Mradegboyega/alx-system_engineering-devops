@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+# Configures Nginx to redirect /redirect_me to another page with a 301 Moved Permanently status
+
+# Install Nginx if it's not already installed
+apt-get update
+apt-get install nginx -y
+
+# Ensure Nginx is started
+service nginx start
+
+# Add a custom configuration for redirection in Nginx's default site configuration
+# Note: Backup the original file before making changes
+cp /etc/nginx/sites-available/default /etc/nginx/sites-available/default.bak
+
+# Using sed to insert redirection configuration before the last '}' in the default config file
+sed -i '/^}/i \\trewrite ^/redirect_me$ https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;' /etc/nginx/sites-available/default
+
+# Reload Nginx to apply changes
+service nginx reload
+
+echo "Nginx has been configured to redirect /redirect_me to another page."
