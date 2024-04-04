@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+# Check if Nginx is running
+service nginx status 2>&1 | grep -q "not running" && echo "Nginx is not running" || echo "Nginx is running"
