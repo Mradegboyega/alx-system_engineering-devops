@@ -1,41 +1,20 @@
 #!/usr/bin/env bash
-# This script displays information about specified subdomains.
+# Script to display information about server subdomains
 
-# Function to query DNS and display information
-query_dns() {
-  local domain=$1
-  local subdomain=$2
-  # Use dig command to get the IP address of the subdomain
-  local result=$(dig +short $subdomain.$domain)
-  # Determine the record type using awk. A simple check—assuming only A or CNAME records.
-  local record_type="A"
-  if [[ $result == *"."* ]]; then
-    record_type="CNAME"
-  fi
-  echo "The subdomain $subdomain is a $record_type record and points to $result"
+# Define a function to fetch and display DNS information for specified subdomains
+get_dns_info() {
+    # Check if subdomain argument is provided
+    if [ -n "$2" ]; then
+        # If subdomain argument is provided, query DNS for that specific subdomain
+        dig "$2.$1" | grep -A1 'ANSWER SECTION:' | paste - - | awk -v sd="$2" '{print "The subdomain " sd " is a " $7 " record and points to " $8}'
+    else
+        # If no subdomain argument provided, query DNS for default subdomains
+        dig "www.$1" | grep -A1 'ANSWER SECTION:' | paste - - | awk '{print "The subdomain www is a " $7 " record and points to " $8}'
+        dig "lb-01.$1" | grep -A1 'ANSWER SECTION:' | paste - - | awk '{print "The subdomain lb-01 is a " $7 " record and points to " $8}'
+        dig "web-01.$1" | grep -A1 'ANSWER SECTION:' | paste - - | awk '{print "The subdomain web-01 is a " $7 " record and points to " $8}'
+        dig "web-02.$1" | grep -A1 'ANSWER SECTION:' | paste - - | awk '{print "The subdomain web-02 is a " $7 " record and points to " $8}'
+    fi
 }
 
-# Main logic of the script
-main() {
-  local domain=$1
-  local subdomain=$2
-
-  if [[ -z $domain ]]; then
-    echo "Domain name is required."
-    exit 1
-  fi
-
-  # Check if subdomain is provided
-  if [[ -n $subdomain ]]; then
-    query_dns "$domain" "$subdomain"
-  else
-    # Default subdomains to check
-    local subdomains=("www" "lb-01" "web-01" "web-02")
-    for sub in "${subdomains[@]}"; do
-      query_dns "$domain" "$sub"
-    done
-  fi
-}
-
-# Call the main function with all arguments passed to the script
-main "$@"
+# Call the function with domain and subdomain arguments
+get_dns_info "$1" "$2"
