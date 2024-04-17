@@ -52,8 +52,8 @@ frontend web_server
 # Backend configuration
 backend web_server
     balance roundrobin
-    server 18718-web-01 34.203.33.59:80 check
-    server 18718-web-02 34.203.33.59:80 check
+    server 518903-web-01 34.203.33.59:80 check
+    server 518903-web-02 18.233.67.31:80 check
 
 # Backend for Let's Encrypt ACME challenge
 backend letsencrypt-backend
